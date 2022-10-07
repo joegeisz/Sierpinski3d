@@ -58,66 +58,22 @@ class SierpinskiRelative():
 
 
 
-
-
-def s1(x,y):
-    return x/2, y/2
-
-def s2(x,y):
-    return (x+1)/2, y/2
-
-def s3(x,y):
-    return x/2, (y+1)/2
-
-def symmetry(i):
-    arr = np.eye(2)
-    perms = list(permutations(arr))
-    arr = np.array(perms[i//4])
-    if i%2 == 1:
-        arr[:,0] = -arr[:,0]
-    if (i//2)%2 == 1:
-        arr[:,1] = -arr[:,1]
-    return arr
-
-def transform(pt,s,i):
-    mat = symmetry(i)
-    pt = pt - 0.5
-    pt = np.matmul(pt,mat)
-    pt = pt + 0.5
-    if s == 0:
-        return s1(pt[0],pt[1])
-    if s == 1:
-        return s2(pt[0],pt[1])
-    if s == 2:
-        return s3(pt[0],pt[1])
-    else:
-        raise "Nope"
-
-def ptcloud(a,b,c,numpts = 50000):
-    IFS = [a,b,c]
-    ip = np.array([0,0.5])
-    n = 50000
-    pts = np.zeros([n,2])
-    for i in range(n):
-        pts[i,:] = ip
-        sym = np.random.randint(3)
-        ip[0], ip[1] = transform(ip,sym,IFS[sym])
-    return pts
-
 if __name__=="__main__":
     # Draw Sierpinski Gasket
-    pts = ptcloud(0,0,0)
+    frac = SierpinskiRelative([0,0,0])
+    pts, col = frac.IFS_pointcloud(5000, color = True)
 
     fig1, ax1 = plt.subplots()
     ax1.set_aspect('equal')
-    ax1.scatter(pts[10:,0],pts[10:,1],s=.5)
+    ax1.scatter(pts[:,0],pts[:,1],s=.5,c = col)
     plt.show()
 
     #Draw 4 random
 
     fig2, axs = plt.subplots(1,4,figsize = (16,4))
     for ax in axs:
-        pts = ptcloud(np.random.randint(8),np.random.randint(8),np.random.randint(8))
+        frac = SierpinskiRelative([np.random.randint(8),np.random.randint(8),np.random.randint(8)])
+        pts = frac.IFS_pointcloud(5000)
         ax.set_aspect('equal')
-        ax.scatter(pts[10:,0],pts[10:,1],s=.5)
+        ax.scatter(pts[:,0],pts[:,1],s=.5)
     plt.show()
