@@ -1,19 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from itertools import permutations, combinations, product
-from .Sierpinski3dClass import transformation
-
-class square_symmetry():
-    def __init__(self,i):
-        arr = np.eye(2)
-        perms = list(permutations(arr))
-        arr = np.array(perms[i//4])
-        if i%2 == 1:
-            arr[:,0] = -arr[:,0]
-        if (i//2)%2 == 1:
-            arr[:,1] = -arr[:,1]
-        self.matrix = arr
-        self.transform = transformation(self.matrix, np.zeros(2))
+from .Symmetries import *
 
 
 class SierpinskiRelative():
