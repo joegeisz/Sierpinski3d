@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 
 
 if __name__ == "__main__":
+    
+    # Set parameters
     params = [0,-1,-1,0,-1,0,0,-1]
     #params = [0,2,21,-1,-1,-1,9,-1]
     #params = [0, -1, 0, 0, 0, 0 , 0, 0]
