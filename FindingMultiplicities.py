@@ -1,5 +1,5 @@
 import numpy as np
-from Sierpinski3dClass import *
+from Fractals.Sierpinski3d import *
 
 def transform_by_O(i,ptcld):
     transform = O(i).transform()

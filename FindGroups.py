@@ -1,21 +1,12 @@
 import time, math
 import matplotlib
 import matplotlib.pyplot as plt
-from Sierpinski3dClass import *
+from Fractals.Sierpinski3d import *
+from Fractals.Utilities import gen_all_params
 import itertools
 import matplotlib.animation as animation
 import copy
 matplotlib.use("Qt4Agg")
-
-
-
-def gen_all_params(n):
-    for i, subcubes in enumerate(itertools.combinations(range(8),n)):
-        for j, symmetries in enumerate(itertools.product(range(48),repeat = n)):
-            params = -np.ones(8,dtype = int)
-            for k, cube in enumerate(subcubes):
-                params[cube] = symmetries[k]
-            yield list(params)
 
 
 
