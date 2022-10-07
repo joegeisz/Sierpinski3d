@@ -1,4 +1,5 @@
 import numpy as np
+import itertools
 
 def random_params(n):
     assert n < 8
