@@ -1,18 +1,9 @@
-import time, math
-import matplotlib.pyplot as plt
-from Sierpinski3dClass import *
+from Fractals.Sierpinski3d import Sierpinski3d
+from Fractals.Utilities import gen_all_params
 import itertools
 import matplotlib.animation as animation
-
-
-
-def gen_all_params(n):
-    for i, subcubes in enumerate(itertools.combinations(range(8),n)):
-        for j, symmetries in enumerate(itertools.product(range(48),repeat = n)):
-            params = -np.ones(8,dtype = int)
-            for k, cube in enumerate(subcubes):
-                params[cube] = symmetries[k]
-            yield params
+import time, math
+import matplotlib.pyplot as plt
 
 def main():
     numframes = 1000
