@@ -1,4 +1,6 @@
 import numpy as np
+from itertools import permutations, combinations, product
+import matplotlib.pyplot as plt 
 
 class transformation:
     def __init__(self,matrix,vector):

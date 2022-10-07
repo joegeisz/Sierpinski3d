@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from itertools import permutations, combinations, product
 from .Symmetries import *
 
-
 class SierpinskiRelative():
 
     def __init__(self,params):

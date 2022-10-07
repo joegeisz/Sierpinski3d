@@ -1,4 +1,4 @@
-from Fractals.Sierpinski3dClass import Sierpinski3d 
+from Fractals.Sierpinski3d import Sierpinski3d
 import matplotlib.pyplot as plt
 
 
