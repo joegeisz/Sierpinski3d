@@ -1,5 +1,6 @@
-from Sierpinski3dClass import *
+from Fractals.Symmetries import O
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 table = np.zeros((48,48))
