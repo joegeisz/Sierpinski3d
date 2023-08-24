@@ -5,6 +5,7 @@ import numpy as np
 import time, os
 from functools import partial
 from multiprocessing import Pool
+import pandas as pd
 
 
 def Ls(params,ns):
@@ -46,9 +47,8 @@ def plotLs(ns,L, savefig = None):
     axs[0].legend([0,1])
     if savefig:
         plt.savefig(savefig)
+        plt.close()
     return fig
-
-def plot(params):
 
 
 def analyze(params, ns = [10,20,30]):
@@ -58,6 +58,7 @@ def analyze(params, ns = [10,20,30]):
     plt_name = os.path.join("2dphdim",plt_name)
     plt_name = os.path.join("Outputs",plt_name)
     plotLs(ns,L,savefig = plt_name)
+    print(params)
     return d0,d1
 
 
@@ -67,10 +68,17 @@ def analyze(params, ns = [10,20,30]):
 
 if __name__ == "__main__":
     t0 = time.time()
-    param_list = ([4,2,7],[0,6,1],[0,1,2])
-    es = np.arange(3.5,4,0.005)
+    param_list = [[i,j,k] for i in range(8) for j in range(8) for k in range(8)]
+    #param_list = [[0,0,i] for i in range(5)]
+    es = np.arange(3,4,0.01)
     ns = [int(10**e) for e in es]
     func = partial(analyze,ns = ns)
-    with Pool(3) as p:
-        print(p.map(func, param_list))
+    results = pd.DataFrame()
+    with Pool(6) as p:
+        dims = p.map(func, param_list)
+    results["Parameters"] = param_list
+    dims = np.array(dims)
+    results["d0"] = dims[:,0]
+    results["d1"] = dims[:,1]
+    results.to_csv("Outputs/Results.csv")
     print("Time: ", time.time()-t0)

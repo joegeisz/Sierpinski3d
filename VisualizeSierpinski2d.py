@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 if __name__ == "__main__":
 
     # Set parameters
-    params = [0,7,1]
-    ifs_points = 10000
+    params = [1,6,2]
+    ifs_points = 1000000
 
     # Create Fractal
     frac = SierpinskiRelative(params)
@@ -15,5 +15,5 @@ if __name__ == "__main__":
     # Plot random IFS points
     fig = plt.figure()
     ax = fig.add_subplot()
-    ax.scatter(ifs[:,0],ifs[:,1],c = c_ifs)
+    ax.scatter(ifs[:,0],ifs[:,1],c = c_ifs, s = 0.01)
     plt.show()

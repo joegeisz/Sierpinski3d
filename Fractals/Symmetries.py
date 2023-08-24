@@ -1,6 +1,8 @@
 import numpy as np
 from itertools import permutations, combinations, product
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+from matplotlib.transforms import Affine2D
 
 class transformation:
     def __init__(self,matrix,vector):
@@ -25,6 +27,31 @@ class square_symmetry():
             arr[:,1] = -arr[:,1]
         self.matrix = arr
         self.transform = transformation(self.matrix, np.zeros(2))
+
+    def visualize(self):
+        fig, [ ax1, ax2 ]   = plt.subplots(1,2)
+        ax1.set_xlim(-1,1)
+        ax1.set_ylim(-1,1)
+        ax1.set_aspect(1)
+
+        ax2.set_xlim(-1,1)
+        ax2.set_ylim(-1,1)
+        ax2.set_aspect(1)
+
+        r1 = Rectangle((-.75,-.75),.5,1.5)
+        r2 = Rectangle((-.75,-.75),1.0,.5)
+        mat = np.eye(3)
+        mat[:2,:2] = self.matrix
+        trans = Affine2D(mat) + ax2.transData
+        r3 = Rectangle((-.75,-.75),.5,1.5, transform = trans)
+        #r3 = Rectangle((-.75,-.75),.5,1.5)#, transform = trans)
+        r4 = Rectangle((-.75,-.75),1.0,.5, transform = trans)
+        #r4 = Rectangle((-.75,-.75),1.0,.5)#, transform = trans)
+        ax1.add_patch(r1)
+        ax1.add_patch(r2)
+        ax2.add_patch(r3)
+        ax2.add_patch(r4)
+        plt.show()
 
 
 class O:
