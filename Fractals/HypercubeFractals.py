@@ -7,10 +7,13 @@ class HypercubeFractalReport:
         self.dim = dim 
         self.subcubes = 2**dim 
         self.groupElements = 2**dim*np.math.factorial(dim)
+        self.totalFracs = (self.groupElements+1)**self.subcubes
+        self.totalFracsInteresting = self.totalFracs - 1 - (self.groupElements)**self.subcubes
         print("In dimension %i" % dim)
         print("A %i dimensional hypercube is made up of %i sub-hypercubes" % (dim, self.subcubes))
         print("The hyper-octahedral group of dimension %i has %i elements in it" % (dim, self.groupElements))
-        
+        print("There are %i possible parameter values" % self.totalFracs)
+        print("Eliminating the zero and %i subsets, that is %i" % (self.subcubes,self.totalFracsInteresting))
 
     def subsets(self):
         for i in range(1,self.subcubes):
@@ -25,6 +28,6 @@ class HypercubeFractalReport:
 
 
 class HypercubeFractal:
-    """Any dimensional analog of the Sierpinski Relatives"""
+    """Any-dimensional analog of the Sierpinski Relatives"""
     def __init__(self,dim,params):
         pass
