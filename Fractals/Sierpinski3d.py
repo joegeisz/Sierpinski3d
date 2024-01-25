@@ -128,13 +128,3 @@ class Sierpinski3d:
 
         return full_points, full_colors
 
-
-
-if __name__ == "__main__":
-    frac = Sierpinski3d([0,-1,-1,0,-1,0,0,-1])
-    ptcld, c = frac.cubical_complex_midpoints(4 ,color = True)
-
-    fig = plt.figure()
-    ax = fig.add_subplot(projection='3d')
-    ax.scatter(ptcld[:,0],ptcld[:,1],ptcld[:,2],c = c)
-    plt.show()

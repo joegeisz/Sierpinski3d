@@ -4,7 +4,11 @@ from itertools import permutations, combinations, product
 from .Symmetries import *
 
 class SierpinskiRelative():
-
+    """
+    SierpinskiRelative represents a fractal created similarly to the sierpinski gasket. It is 
+        specified by 3 parameters, representing elements of the dihedral symmetry group, here thought
+        of as the symmetries of the square. 
+    """
     def __init__(self,params):
         assert len(params) == 3
 
@@ -45,22 +49,3 @@ class SierpinskiRelative():
 
 
 
-if __name__=="__main__":
-    # Draw Sierpinski Gasket
-    frac = SierpinskiRelative([0,0,0])
-    pts, col = frac.IFS_pointcloud(5000, color = True)
-
-    fig1, ax1 = plt.subplots()
-    ax1.set_aspect('equal')
-    ax1.scatter(pts[:,0],pts[:,1],s=.5,c = col)
-    plt.show()
-
-    #Draw 4 random
-
-    fig2, axs = plt.subplots(1,4,figsize = (16,4))
-    for ax in axs:
-        frac = SierpinskiRelative([np.random.randint(8),np.random.randint(8),np.random.randint(8)])
-        pts = frac.IFS_pointcloud(5000)
-        ax.set_aspect('equal')
-        ax.scatter(pts[:,0],pts[:,1],s=.5)
-    plt.show()
