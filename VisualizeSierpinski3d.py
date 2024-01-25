@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 if __name__ == "__main__":
     
     # Set parameters
-    params = [0,-1,-1,0,-1,0,0,-1]
+    params = [0,-1,-1,0,-1,0,0,-1] # Sierpinski Tetrahedron
     #params = [0,2,21,-1,-1,-1,9,-1]
-    #params = [0, -1, 0, 0, 0, 0 , 0, 0]
+    #params = [0, -1, 0, 0, 0, 0 , 0, 0] # Dense fractal
     iterations = 4
     ifs_points = 10000
 
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     cubical, c_cube = frac.cubical_complex_midpoints(iterations ,color = True)
     ifs, c_ifs = frac.IFS_pointcloud(ifs_points,  color = True)
 
-    # Plot points representing midpointd of cubical complex
+    # Plot points representing midpoints of cubical complex
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     ax.scatter(cubical[:,0],cubical[:,1],cubical[:,2],c = c_cube)
