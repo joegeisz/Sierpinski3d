@@ -30,5 +30,5 @@ if __name__ == "__main__":
             axs[i,j].xaxis.set_ticks(np.array([-1,0,1]))
             axs[i,j].yaxis.set_ticks(np.array([-1,0,1]))
             axs[i,j].zaxis.set_ticks(np.array([-1,0,1]))
-    #plt.show()
-    plt.savefig("random_fracs")
+
+    plt.savefig("Outputs/random_fracs.jpg")

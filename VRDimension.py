@@ -8,10 +8,10 @@ import time
 
 if __name__ == "__main__":
 
-    npts = 100000
+    npts = 10000
     params = [0,-1,-1,0,-1,0,0,-1]
     frac = Sierpinski3d(params)
-    ptcld, c = frac.IFS_pointcloud(npts ,color = True)
+    ptcld = frac.IFS_pointcloud(npts)
 
     alpha_complex = gudhi.AlphaComplex(points=ptcld)
     simplex_tree = alpha_complex.create_simplex_tree()
